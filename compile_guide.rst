@@ -1,5 +1,4 @@
 
-
 1) prepare host
 
 
@@ -41,40 +40,51 @@ To compile ARM UBL
         ubl-spi.bin file is placed in the board_utils/armubl directory 
 
 To compile U-Boot:
-        untar board_utils/u-boot-1.3.3.tar.gz
-        Make sure MontaVista tools are in $PATH
-        change to u-boot-1.3.3 directory and issue: 
 
-board_utils/u-boot-1.3.3
+untar board_utils/u-boot-1.3.3.tar.gz
+Make sure MontaVista tools are in $PATH
+change to u-boot-1.3.3 directory and issue::
 
-make distclean
-make da830_omapl137_config
-make 
+   cd ~/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/PSP_02_20_00_07/board_utilities/u-boot-1.3.3
+   
+   make distclean
+   make da830_omapl137_config
+   make 
 
 u-boot.bin in created in top level directory 
 
 
 
-
 4) compile kernel
 
+::
 
-~/mv_pro_5.0/montavista/pro/devkit/lsp/ti-davinci/linux-2.6.18_pro500
-
-make distclean ARCH=arm CROSS_COMPILE=arm_v5t_le-
-make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
-make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   cd ~/mv_pro_5.0/montavista/pro/devkit/lsp/ti-davinci/linux-2.6.18_pro500
+   
+   make distclean ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
 uImage in created in arch/arm/boot directory 
 
+::
 
-apt-get install libncurses5-dev
-make menuconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   apt-get install libncurses5-dev
+   make menuconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
 
 
 5) compile filesystem
 
+
+/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
+
+::
+
+   ln -s ./sbin/init init
+   
+   find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
+   zcat initramfs.cpio.gz | cpio -idmv
 
 
 
