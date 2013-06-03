@@ -1,0 +1,90 @@
+
+
+1) prepare host
+
+
+
+2) install sdk
+
+
+
+
+
+
+edit env::
+
+   vi env.sh
+
+   C6000_C_DIR="/home/<user>/TI/TI_CGT_C6000_6.1.9/include;/home/<user>/TI/TI_CGT_C6000_6.1.9/lib"
+   PATH="/home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/bin:/home/<user>/mv_pro_5.0/montavista/pro/bin:/home/<user>/mv_pro_5.0/montavista/common/bin:$PATH"
+
+   source env.sh
+
+
+
+3) compile bootloader
+
+
+
+Optional if using pre-compiled binaries from bin directory of PSP package
+    To compile SPI flash writer:
+        open board_utils/flash_writers/spi_flash_writer/ccsv3.3/spiflash_writer.pjt in CCStudio v3.3
+        Build the Project like any other CCStudio project
+
+        spiflash_writer.out is placed in the Debug directory 
+    Re-compiling DSP UBL should typically not be needed. If required, refer to "Additional Procedures" section of PSP User's Guide.
+
+To compile ARM UBL
+        open board_utils/armubl/ubl.pjt in CCStudio v3.3
+        Build the Project like any other CCStudio project
+
+        ubl-spi.bin file is placed in the board_utils/armubl directory 
+
+To compile U-Boot:
+        untar board_utils/u-boot-1.3.3.tar.gz
+        Make sure MontaVista tools are in $PATH
+        change to u-boot-1.3.3 directory and issue: 
+
+board_utils/u-boot-1.3.3
+
+make distclean
+make da830_omapl137_config
+make 
+
+u-boot.bin in created in top level directory 
+
+
+
+
+4) compile kernel
+
+
+~/mv_pro_5.0/montavista/pro/devkit/lsp/ti-davinci/linux-2.6.18_pro500
+
+make distclean ARCH=arm CROSS_COMPILE=arm_v5t_le-
+make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
+make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
+
+uImage in created in arch/arm/boot directory 
+
+
+apt-get install libncurses5-dev
+make menuconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
+
+
+
+5) compile filesystem
+
+
+
+
+6) comile kernel module
+
+
+
+
+7) compile user application
+
+
+arm_v5t_le-gcc hello.c -o hello 
+
