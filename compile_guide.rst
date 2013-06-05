@@ -1,4 +1,9 @@
 
+
+
+http://processors.wiki.ti.com/index.php?title=Getting_Started_Guide_for_OMAP-L137
+
+
 1) prepare host
 
 
