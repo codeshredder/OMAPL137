@@ -1,5 +1,4 @@
 
-
 http://processors.wiki.ti.com/index.php?title=Getting_Started_Guide_for_OMAP-L137
 
 
@@ -119,7 +118,13 @@ host$ mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
    ln -s ./sbin/init init
    
    find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
+   find . | cpio -o -H newc | bzip2 > ../initramfs.cpio.bz2
+   
+   解压
    zcat initramfs.cpio.gz | cpio -idmv
+   
+   gunzip  initramfs.cpio.gz
+   cpio -idmv  < initramfs.cpio
 
 
 
