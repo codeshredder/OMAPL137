@@ -1,6 +1,5 @@
 
 
-
 http://processors.wiki.ti.com/index.php?title=Getting_Started_Guide_for_OMAP-L137
 
 
@@ -82,6 +81,37 @@ uImage in created in arch/arm/boot directory
 5) compile filesystem
 
 
+ 第一种方法，源码包中给出了一个ramdisk.gz，可以直接做成镜像。其位置为/opt/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/images/ramdisk.gz，具体操作：
+
+   Create a working directory 
+
+   host$ mkdir -p /home/user/workdir
+
+    Copy the example ramdisk.gz file to the working directory 
+
+   host$ cd /home/user/workdir
+
+   host$ cp <ramdisk location>/ramdisk.gz .
+
+    Gunzip and mount the ramdisk image to a temporary directory 
+
+   host$ mkdir ram
+
+   host$ gunzip ramdisk.gz
+
+   host$ mount ramdisk ram -o loop
+
+    Create the JFFS2 image of the file system mounted at /home/user/workdir/ram
+
+host$ mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
+
+生成的rootfs.jffs2就是所要的镜像文件
+
+第二种方法，通过裁剪target文件自己制作一个镜像，此方法比较复杂，具体见TI Davinci DM6446 开发攻略.doc
+
+ 
+
+ 
 /mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
 
 ::
