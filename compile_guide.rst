@@ -1,9 +1,15 @@
-
 http://processors.wiki.ti.com/index.php?title=Getting_Started_Guide_for_OMAP-L137
 
 
 1) prepare host
 
+check http://processors.wiki.ti.com/index.php/Linux_Host_Support
+to install dependency packages in host linux(ubuntu 64-bit especially).
+
+::
+
+   #ubuntu 13.04 64-bit
+   sudo apt-get install ia32-libs libjpeg62:i386 libgnomevfs2-0:i386 liborbit2:i386
 
 
 2) install sdk
