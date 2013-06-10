@@ -1,7 +1,53 @@
+
+==========================================================
+  TI OMAPL137 Compile Guide
+==========================================================
+
+
+Authors
+==========
+
+`codeshredder <https://github.com/codeshredder>`_ 
+
+Reference
+==========
+
+most information from TI Support site::
+
 http://processors.wiki.ti.com/index.php?title=Getting_Started_Guide_for_OMAP-L137
 
 
-1) prepare host
+Table of Contents
+=================
+
+::
+
+  0. What is it?
+  1. Overview
+  2. Host Prepare
+  3. Install SDK
+  4. Build Bootloader
+  5. Build linux kernel
+  6. Build linux fs
+  7. Boot linux
+  8. Develop kernel module
+  9. Develop user application
+  10. Licensing
+  11. Contacts
+  
+0. What is it?
+==============
+
+It is a short way to build L137 test environment. 
+
+
+1. Overview
+====================
+
+
+
+2. Host Prepare
+============
 
 check http://processors.wiki.ti.com/index.php/Linux_Host_Support
 to install dependency packages in host linux(ubuntu 64-bit especially).
@@ -12,7 +58,8 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
    sudo apt-get install ia32-libs libjpeg62:i386 libgnomevfs2-0:i386 liborbit2:i386
 
 
-2) install sdk
+3. Install SDK
+============
 
 
 
@@ -30,7 +77,8 @@ edit env::
 
 
 
-3) compile bootloader
+4. Build Bootloader
+====================
 
 
 
@@ -64,7 +112,8 @@ u-boot.bin in created in top level directory
 
 
 
-4) compile kernel
+5. Build linux kernel
+====================
 
 ::
 
@@ -83,7 +132,8 @@ uImage in created in arch/arm/boot directory
 
 
 
-5) compile filesystem
+6. Build linux fs
+====================
 
 
  第一种方法，源码包中给出了一个ramdisk.gz，可以直接做成镜像。其位置为/opt/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/images/ramdisk.gz，具体操作：
@@ -134,13 +184,36 @@ host$ mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
 
 
 
-6) comile kernel module
+7. Boot linux
+====================
 
 
 
 
-7) compile user application
+8. Develop kernel module
+====================
 
+
+
+
+9. Develop user application
+====================
 
 arm_v5t_le-gcc hello.c -o hello 
+
+
+
+
+
+10. Licensing
+============
+
+This project is licensed under Creative Commons License.
+
+To view a copy of this license, visit [ http://creativecommons.org/licenses/ ].
+
+11. Contacts
+===========
+
+codeshredder  : evilforce@gmail.com
 
