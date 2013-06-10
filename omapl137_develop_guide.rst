@@ -170,7 +170,7 @@ u-boot.bin in created in top level directory.
 5. Build linux kernel
 ====================
 
-::
+Compile default kernel::
 
    cd ~/mv_pro_5.0/montavista/pro/devkit/lsp/ti-davinci/linux-2.6.18_pro500
    
@@ -178,11 +178,12 @@ u-boot.bin in created in top level directory.
    make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
    make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
-uImage in created in arch/arm/boot directory 
+uImage in created in arch/arm/boot directory.
 
-::
+if want to change kernel config, you can do this::
 
-   apt-get install libncurses5-dev
+   sudo apt-get install libncurses5-dev
+   
    make menuconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
 
