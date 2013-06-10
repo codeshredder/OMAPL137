@@ -191,36 +191,39 @@ if want to change kernel config, you can do this::
 6. Build linux fs
 ====================
 
+1) small fs
 
- 第一种方法，源码包中给出了一个ramdisk.gz，可以直接做成镜像。其位置为/opt/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/images/ramdisk.gz，具体操作：
+there is a small ramfs image in /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/images/ramdisk.gz
 
-   Create a working directory 
+::
 
-   host$ mkdir -p /home/user/workdir
+   # Create a working directory 
+   $ mkdir -p /home/user/workdir
+   
+   # Copy the example ramdisk.gz file to the working directory 
 
-    Copy the example ramdisk.gz file to the working directory 
+   $ cd /home/user/workdir
 
-   host$ cd /home/user/workdir
+   $ cp <ramdisk location>/ramdisk.gz.
 
-   host$ cp <ramdisk location>/ramdisk.gz .
+   # Gunzip and mount the ramdisk image to a temporary directory 
 
-    Gunzip and mount the ramdisk image to a temporary directory 
+   $ mkdir ram
 
-   host$ mkdir ram
+   $ gunzip ramdisk.gz
 
-   host$ gunzip ramdisk.gz
+   $ mount ramdisk ram -o loop
 
-   host$ mount ramdisk ram -o loop
+   # Create the JFFS2 image of the file system mounted at /home/user/workdir/ram
 
-    Create the JFFS2 image of the file system mounted at /home/user/workdir/ram
-
-host$ mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
+   $ mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
 
 生成的rootfs.jffs2就是所要的镜像文件
 
-第二种方法，通过裁剪target文件自己制作一个镜像，此方法比较复杂，具体见TI Davinci DM6446 开发攻略.doc
 
- 
+2) big fs
+
+通过裁剪target文件自己制作一个镜像，此方法比较复杂，具体见TI Davinci DM6446 开发攻略.doc
 
  
 /mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
