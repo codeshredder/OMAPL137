@@ -106,6 +106,12 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
    $ ./mvl_5_0_0_demo_lsp_setuplinux_02_20_00_07.bin --mode console
    
    # install to the same dir(/home/<user>/mv_pro_5.0)
+   
+   $ cd /home/<user>/mv_pro_5.0/
+   $ sudo tar xvf mvltools5_0_0801921_update.tar.gz
+   $ sudo tar xvf LSP_02_20_00_07.tar.gz
+   
+   $ sudo chown -R xxx:xxx ./
 
 
 5) edit env
