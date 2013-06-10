@@ -43,6 +43,17 @@ It is a short way to build L137 test environment.
 1. Overview
 ====================
 
+about OMAPL137::
+
+   http://www.ti.com/product/omap-l137
+
+
+about L137_EVM::
+
+   http://processors.wiki.ti.com/index.php/EVM_Overview_-_OMAP-L137
+
+
+first of all, you must buy a TI L137 Demo Board first. you may need SN from it.
 
 
 2. Host Prepare
@@ -60,8 +71,22 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 3. Install SDK
 ============
 
+* Download SDK:
 
+1) Register TI account
 
+2) Add SN from demo board
+
+3) get the latest sdk from www.ti.com/myregisteredsoftware. such as
+
+::
+
+   OMAPL137_arm_setuplinux_1_00_00_11.bin  Linux OMAPL137 ARM Installer
+   bios_setuplinux_5_33_05.bin   BSP BIOS 5_33_05 Linux Installer
+   xdctools_setuplinux_3_10_05_61.bin   Linux XDC Tools
+   LPTB-02.03.00.02-beta.bin   Linux performance test bench
+   mvl_5_0_0801921_demo_sys_setuplinux.bin   MVL 5.0 Tools
+   ti_cgt_c6000_6.1.9_setup_linux_x86.bin   Codegen 6.1.9 For Linux
 
 
 
