@@ -132,24 +132,30 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
 
 
-Optional if using pre-compiled binaries from bin directory of PSP package
-    To compile SPI flash writer:
-        open board_utils/flash_writers/spi_flash_writer/ccsv3.3/spiflash_writer.pjt in CCStudio v3.3
-        Build the Project like any other CCStudio project
+1) To compile SPI flash writer::
 
-        spiflash_writer.out is placed in the Debug directory 
-    Re-compiling DSP UBL should typically not be needed. If required, refer to "Additional Procedures" section of PSP User's Guide.
+   open board_utils/flash_writers/spi_flash_writer/ccsv3.3/spiflash_writer.pjt in CCStudio v3.3
+   Build the Project like any other CCStudio project
+   
+   spiflash_writer.out is placed in the Debug directory 
+   Re-compiling DSP UBL should typically not be needed. If required, refer to "Additional Procedures" section of PSP User's Guide.
 
-To compile ARM UBL
-        open board_utils/armubl/ubl.pjt in CCStudio v3.3
-        Build the Project like any other CCStudio project
+2) To compile ARM UBL::
 
-        ubl-spi.bin file is placed in the board_utils/armubl directory 
+   open board_utils/armubl/ubl.pjt in CCStudio v3.3
+   Build the Project like any other CCStudio project
+   
+   ubl-spi.bin file is placed in the board_utils/armubl directory 
 
-To compile U-Boot:
+3) To compile U-Boot:
 
-untar board_utils/u-boot-1.3.3.tar.gz
-Make sure MontaVista tools are in $PATH
+untar board_utils/u-boot-1.3.3.tar.gz::
+
+   cd ~/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/PSP_02_20_00_07/board_utilities/
+   tar xvf u-boot-1.3.3.tar.gz
+
+Make sure MontaVista tools are in $PATH.
+
 change to u-boot-1.3.3 directory and issue::
 
    cd ~/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/PSP_02_20_00_07/board_utilities/u-boot-1.3.3
@@ -158,8 +164,7 @@ change to u-boot-1.3.3 directory and issue::
    make da830_omapl137_config
    make 
 
-u-boot.bin in created in top level directory 
-
+u-boot.bin in created in top level directory.
 
 
 5. Build linux kernel
