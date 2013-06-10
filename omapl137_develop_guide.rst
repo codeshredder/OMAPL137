@@ -227,18 +227,19 @@ There is a big filesystem directory in /home/<user>/mv_pro_5.0/montavista/pro/de
 
 ::
 
-   cd /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
-   ln -s ./sbin/init init
+   $ cd /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
+   $ ln -s ./sbin/init init
    
-   find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
+   $ find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
    # or
-   find . | cpio -o -H newc | bzip2 > ../initramfs.cpio.bz2
+   $ find . | cpio -o -H newc | bzip2 > ../initramfs.cpio.bz2
    
    # to uncompress
-   zcat initramfs.cpio.gz | cpio -idmv
+   
+   $ zcat initramfs.cpio.gz | cpio -idmv
    # or
-   gunzip  initramfs.cpio.gz
-   cpio -idmv  < initramfs.cpio
+   $ gunzip  initramfs.cpio.gz
+   $ cpio -idmv  < initramfs.cpio
 
 
 
