@@ -37,7 +37,7 @@ Table of Contents
 0. What is it?
 ==============
 
-It is a short way to build L137 test environment. 
+It is a short way to build L137 develop environment. 
 
 
 1. Overview
@@ -81,16 +81,36 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
 ::
 
-   OMAPL137_arm_setuplinux_1_00_00_11.bin  Linux OMAPL137 ARM Installer
-   bios_setuplinux_5_33_05.bin   BSP BIOS 5_33_05 Linux Installer
-   xdctools_setuplinux_3_10_05_61.bin   Linux XDC Tools
-   LPTB-02.03.00.02-beta.bin   Linux performance test bench
-   mvl_5_0_0801921_demo_sys_setuplinux.bin   MVL 5.0 Tools
-   ti_cgt_c6000_6.1.9_setup_linux_x86.bin   Codegen 6.1.9 For Linux
+   OMAPL137_arm_setuplinux_1_00_00_11.bin  (Linux OMAPL137 ARM Installer)
+   bios_setuplinux_5_33_05.bin   (BSP BIOS 5_33_05 Linux Installer)
+   xdctools_setuplinux_3_10_05_61.bin   (Linux XDC Tools)
+   LPTB-02.03.00.02-beta.bin   (Linux performance test bench)
+   mvl_5_0_0801921_demo_sys_setuplinux.bin   (MVL 5.0 Tools)
+   ti_cgt_c6000_6.1.9_setup_linux_x86.bin   (Codegen 6.1.9 For Linux)
 
 
+4) install sdk
 
-edit env::
+
+::
+
+   $ ./OMAPL137_arm_setuplinux_1_00_00_11.bin --mode console
+   $ ./xdctools_setuplinux_3_10_05_61.bin --mode console
+   $ ./bios_setuplinux_5_33_05.bin --mode console
+   $ ./ti_cgt_c6000_6.1.9_setup_linux_x86.bin --mode console
+   
+   # all install to /home/<user>
+   
+   $ ./mvl_5_0_0801921_demo_sys_setuplinux.bin --mode console
+   $ cd /home/<user>/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/
+   $ ./mvl_5_0_0_demo_lsp_setuplinux_02_20_00_07.bin --mode console
+   
+   # install to the same dir(/home/<user>/mv_pro_5.0)
+
+
+5) edit env
+
+::
 
    vi env.sh
 
