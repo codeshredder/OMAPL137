@@ -198,46 +198,45 @@ there is a small ramfs image in /home/<user>/mv_pro_5.0/montavista/pro/devkit/ar
 ::
 
    # Create a working directory 
-   $ mkdir -p /home/user/workdir
+   $ mkdir -p /home/<user>/workdir
    
    # Copy the example ramdisk.gz file to the working directory 
 
-   $ cd /home/user/workdir
-
-   $ cp <ramdisk location>/ramdisk.gz.
+   $ cd /home/<user>/workdir
+   $ cp /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/images/ramdisk.gz ./
 
    # Gunzip and mount the ramdisk image to a temporary directory 
 
    $ mkdir ram
-
    $ gunzip ramdisk.gz
-
    $ mount ramdisk ram -o loop
 
-   # Create the JFFS2 image of the file system mounted at /home/user/workdir/ram
+   # Create initramfs
+   
+   $ cd ram
+   $ find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
+
+   # Create the JFFS2 image of the file system mounted at /home/<user>/workdir/ram
 
    $ mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
-
-生成的rootfs.jffs2就是所要的镜像文件
 
 
 2) big fs
 
-通过裁剪target文件自己制作一个镜像，此方法比较复杂，具体见TI Davinci DM6446 开发攻略.doc
-
- 
-/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
+There is a big filesystem directory in /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
 
 ::
 
+   cd /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
    ln -s ./sbin/init init
    
    find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
+   # or
    find . | cpio -o -H newc | bzip2 > ../initramfs.cpio.bz2
    
-   解压
+   # to uncompress
    zcat initramfs.cpio.gz | cpio -idmv
-   
+   # or
    gunzip  initramfs.cpio.gz
    cpio -idmv  < initramfs.cpio
 
