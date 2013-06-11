@@ -209,12 +209,12 @@ there is a small ramfs image in /home/<user>/mv_pro_5.0/montavista/pro/devkit/ar
 
    $ mkdir ram
    $ gunzip ramdisk.gz
-   $ mount ramdisk ram -o loop
+   # mount ramdisk ram -o loop
 
    # Create initramfs
    
-   $ cd ram
-   $ find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
+   # cd ram
+   # find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
 
    # Create the JFFS2 image of the file system mounted at /home/<user>/workdir/ram
 
