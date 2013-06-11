@@ -249,7 +249,7 @@ There is a big filesystem directory in /home/<user>/mv_pro_5.0/montavista/pro/de
 ::
 
    mkdir /home/<user>/fs/target
-   cp /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/* /home/<user>/fs/target/
+   cp -rf /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/* /home/<user>/fs/target/
    cd /home/<user>/fs/target
 
 
