@@ -151,14 +151,14 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
 untar board_utils/u-boot-1.3.3.tar.gz::
 
-   cd ~/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/PSP_02_20_00_07/board_utilities/
+   cd /home/<user>/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/PSP_02_20_00_07/board_utilities/
    tar xvf u-boot-1.3.3.tar.gz
 
 Make sure MontaVista tools are in $PATH.
 
 change to u-boot-1.3.3 directory and issue::
 
-   cd ~/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/PSP_02_20_00_07/board_utilities/u-boot-1.3.3
+   cd /home/<user>/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/PSP_02_20_00_07/board_utilities/u-boot-1.3.3
    
    make distclean
    make da830_omapl137_config
@@ -172,7 +172,7 @@ u-boot.bin in created in top level directory.
 
 Compile default kernel::
 
-   cd ~/mv_pro_5.0/montavista/pro/devkit/lsp/ti-davinci/linux-2.6.18_pro500
+   cd /home/<user>/mv_pro_5.0/montavista/pro/devkit/lsp/ti-davinci/linux-2.6.18_pro500
    
    make distclean ARCH=arm CROSS_COMPILE=arm_v5t_le-
    make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
