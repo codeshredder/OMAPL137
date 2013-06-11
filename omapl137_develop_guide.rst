@@ -179,7 +179,7 @@ Compile default kernel::
    
    make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
    make modules ARCH=arm CROSS_COMPILE=arm_v5t_le-
-   make modules modules_install INSTALL_MOD_PATH=/home/<user>/fs ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make modules modules_install INSTALL_MOD_PATH=/home/<user>/fs/target ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
 
 notice: 
@@ -199,6 +199,8 @@ if want to change kernel config, you can do this::
 6. Build linux fs
 ====================
 
+sometimes, need root
+
 1) small fs
 
 there is a small ramfs image in /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/images/ramdisk.gz
@@ -206,27 +208,38 @@ there is a small ramfs image in /home/<user>/mv_pro_5.0/montavista/pro/devkit/ar
 ::
 
    # Create a working directory 
-   $ mkdir -p /home/<user>/workdir
+   mkdir -p /home/<user>/fs
    
    # Copy the example ramdisk.gz file to the working directory 
 
-   $ cd /home/<user>/workdir
-   $ cp /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/images/ramdisk.gz ./
+   cd /home/<user>/fs
+   cp /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/images/ramdisk.gz ./
 
    # Gunzip and mount the ramdisk image to a temporary directory 
 
-   $ mkdir ram
-   $ gunzip ramdisk.gz
-   # mount ramdisk ram -o loop
+   mkdir ram
+   gunzip ramdisk.gz
+   mount ramdisk ram -o loop
 
    # Create initramfs
    
-   # cd ram
-   # find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
-
+   make initramfs
+   cp -rf ram/* initramfs/
+   cd initrfamfs
+   ln -s ./sbin/init init
+   
+   find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
+   
+   # to uncompress
+   
+   zcat initramfs.cpio.gz | cpio -idmv
+   # or
+   gunzip  initramfs.cpio.gz
+   cpio -idmv  < initramfs.cpio
+   
    # Create the JFFS2 image of the file system mounted at /home/<user>/workdir/ram
-
-   $ mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
+   
+   mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
 
 
 2) big fs
@@ -235,20 +248,9 @@ There is a big filesystem directory in /home/<user>/mv_pro_5.0/montavista/pro/de
 
 ::
 
-   $ cd /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/
-   $ ln -s ./sbin/init init
-   
-   $ find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
-   # or
-   $ find . | cpio -o -H newc | bzip2 > ../initramfs.cpio.bz2
-   
-   # to uncompress
-   
-   $ zcat initramfs.cpio.gz | cpio -idmv
-   # or
-   $ gunzip  initramfs.cpio.gz
-   $ cpio -idmv  < initramfs.cpio
-
+   mkdir /home/<user>/fs/target
+   cp /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/* /home/<user>/fs/target/
+   cd /home/<user>/fs/target
 
 
 7. Boot linux
