@@ -176,9 +176,17 @@ Compile default kernel::
    
    make distclean ARCH=arm CROSS_COMPILE=arm_v5t_le-
    make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   
    make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make modules ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make modules modules_install INSTALL_MOD_PATH=/home/<user>/fs ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
-uImage in created in arch/arm/boot directory.
+
+notice: 
+1) make modules to filesystem directory.
+
+2) uImage in created in arch/arm/boot directory.
+
 
 if want to change kernel config, you can do this::
 
