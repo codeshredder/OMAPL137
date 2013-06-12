@@ -194,7 +194,7 @@ if want to change kernel config, you can do this::
    
    make menuconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
-noice::
+notice::
 
    # kernel config
    networking －》networking options －》IP：Kernel level autoconfiguration  -> off
