@@ -194,11 +194,11 @@ if want to change kernel config, you can do this::
    
    make menuconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
-notice::
+
+kernel config::
 
    # kernel config
-   networking －》networking options －》IP：Kernel level autoconfiguration  -> off
-
+   networking --> networking options --> IP：Kernel level autoconfiguration --> off
 
 
 6. Build linux fs
@@ -225,26 +225,9 @@ there is a small ramfs image in /home/<user>/mv_pro_5.0/montavista/pro/devkit/ar
    mkdir ram
    gunzip ramdisk.gz
    mount ramdisk ram -o loop
-
-   # Create initramfs
    
-   make initramfs
-   cp -rf ram/* initramfs/
-   cd initrfamfs
-   ln -s ./sbin/init init
-   
-   find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
-   
-   # to uncompress
-   
-   zcat initramfs.cpio.gz | cpio -idmv
-   # or
-   gunzip  initramfs.cpio.gz
-   cpio -idmv  < initramfs.cpio
-   
-   # Create the JFFS2 image of the file system mounted at /home/<user>/workdir/ram
-   
-   mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
+   mkdir smallfs
+   cp -rf ram/* smallfs/
 
 
 2) big fs
@@ -253,9 +236,63 @@ There is a big filesystem directory in /home/<user>/mv_pro_5.0/montavista/pro/de
 
 ::
 
-   mkdir /home/<user>/fs/target
-   cp -rf /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/* /home/<user>/fs/target/
-   cd /home/<user>/fs/target
+   mkdir /home/<user>/fs/bigfs
+   cp -rf /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/* /home/<user>/fs/bigfs/
+   cd /home/<user>/fs/bigfs
+
+
+3) use ramdisk
+
+make fs::
+
+   genext2fs -b 4096 -d smallfs ramdisk
+   gzip -9 -f ramdisk
+
+kernel config::
+
+   General setup --> Initial RAM filesystem and RAM disk
+   Device Drivers --> Block devices --> RAM block device support
+
+u-boot cmdline::
+
+   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw initrd=0xc1180000,4M
+
+4) use initramfs
+
+make fs::
+
+   # make initramfs
+   
+   cd /home/<user>/fs/smallfs
+   ln -s ./sbin/init init
+   
+   find . | cpio -o -H newc | gzip > ../initramfs.cpio.gz
+   
+   # to uncompress
+   zcat initramfs.cpio.gz | cpio -idmv
+   # or
+   gunzip  initramfs.cpio.gz
+   cpio -idmv  < initramfs.cpio
+   
+
+kernel config::
+
+   General setup --> Initial RAM filesystem and RAM disk
+
+
+u-boot cmdline::
+
+   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram rw initrd=0xc1180000, <actual initramfs size>
+
+
+5) use flash fs
+
+make fs::
+
+   # Create the JFFS2 image of the file system mounted at /home/<user>/workdir/ram
+   
+   mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
+
 
 
 7. Boot linux
