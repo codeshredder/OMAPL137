@@ -252,6 +252,8 @@ kernel config::
 
    General setup --> Initial RAM filesystem and RAM disk
    Device Drivers --> Block devices --> RAM block device support
+   File systems --> Second extended fs support
+
 
 u-boot cmdline::
 
@@ -278,6 +280,8 @@ make fs::
 kernel config::
 
    General setup --> Initial RAM filesystem and RAM disk
+   
+   General setup --> Initial RAM filesystem and RAM disk --> () Initramfs source file(s)
 
 
 u-boot cmdline::
