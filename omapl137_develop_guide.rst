@@ -302,6 +302,34 @@ make fs::
 7. Boot linux
 ====================
 
+setup network::
+
+   U-Boot > printenv
+   bootdelay=3
+   baudrate=115200
+   bootfile="uImage"
+   ethaddr=00:0e:99:03:18:98
+   filesize=1B8994
+   fileaddr=C0700000
+   ipaddr=172.16.3.100
+   serverip=172.16.3.203
+   bootcmd=sf probe 0;sf read 0xc0700000 0x1E0000 0x220000; bootm 0xc0700000
+   bootargs=console=ttyS2,115200n8 root=/dev/mmcblk0p1 noinitrd rw ip=off mem=32M
+   stdin=serial
+   stdout=serial
+   stderr=serial
+   ver=U-Boot 1.3.3 (Jun 28 2012 - 13:59:37)
+   
+   Environment size: 384/16380 bytes
+   U-Boot > 
+
+
+boot initramfs::
+
+   tftp 0xc0700000 uImage
+   tftp 0xc1180000 initramfs.cpio.gz
+   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw initrd=0xc1180000, <actual initramfs size>
+   bootm 0xc0700000
 
 
 
