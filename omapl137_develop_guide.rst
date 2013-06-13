@@ -179,7 +179,7 @@ Compile default kernel::
    
    make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
    make modules ARCH=arm CROSS_COMPILE=arm_v5t_le-
-   make modules modules_install INSTALL_MOD_PATH=/home/<user>/fs/target ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make modules modules_install INSTALL_MOD_PATH=/home/<user>/fs/smallfs ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
 
 notice: 
