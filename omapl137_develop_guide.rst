@@ -286,7 +286,7 @@ kernel config::
 
 u-boot cmdline::
 
-   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram rw initrd=0xc1180000, <actual initramfs size>
+   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw initrd=0xc1180000, <actual initramfs size>
 
 
 5) use flash fs
