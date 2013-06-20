@@ -131,7 +131,7 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 ====================
 
 
-1) To compile SPI flash writer::
+1) To compile SPI flash writer:
 
    open board_utils/flash_writers/spi_flash_writer/ccsv3.3/spiflash_writer.pjt in CCStudio v3.3
    Build the Project like any other CCStudio project
@@ -140,15 +140,15 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
    Re-compiling DSP UBL should typically not be needed. If required, refer to "Additional Procedures" section of PSP User's Guide.
 
 
-2) To compile DSP UBL::
+2) To compile DSP UBL:
 
-   open board_utils/armubl/ubl.pjt in CCStudio v3.3
+   open board_utils/dspubl/ubl.pjt in CCStudio v3.3
    Build the Project like any other CCStudio project
    
-   ubl-spi.bin file is placed in the board_utils/armubl directory 
+   dsp-spi-ais.bin file is placed in the board_utils/armubl directory 
 
 
-3) To compile ARM UBL::
+3) To compile ARM UBL:
 
    open board_utils/armubl/ubl.pjt in CCStudio v3.3
    Build the Project like any other CCStudio project
@@ -178,6 +178,7 @@ u-boot.bin in created in top level directory.
 
 5) To flash Bootloader:
 
+http://processors.wiki.ti.com/index.php/OMAP-L137_Software_Design_Guide
 
 http://processors.wiki.ti.com/index.php/Serial_Boot_and_Flash_Loading_Utility_for_OMAP-L137
 
