@@ -114,7 +114,7 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
    $ sudo tar xvf mvltools5_0_0801921_update.tar.gz
    $ sudo tar xvf LSP_02_20_00_07.tar.gz
    
-   $ sudo chown -R xxx:xxx ./
+   $ sudo chown -R <user>:<group> ./
 
 
 5) edit env
