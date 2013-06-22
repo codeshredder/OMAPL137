@@ -264,8 +264,9 @@ make fs::
 kernel config::
 
    General setup --> Initial RAM filesystem and RAM disk
-   
    General setup --> Initial RAM filesystem and RAM disk --> () Initramfs source file(s)
+   
+   Device Drivers --> Block devices --> RAM block device support  --> off
 
 
 u-boot cmdline::
