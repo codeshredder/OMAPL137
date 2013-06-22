@@ -26,8 +26,8 @@ Table of Contents
   2. Host Prepare
   3. Install SDK
   4. Build Bootloader
-  5. Build linux fs
-  6. Build linux kernel
+  5. Build linux kernel
+  6. Build linux fs
   7. Boot linux
   8. Develop kernel module
   9. Develop user application
@@ -185,7 +185,43 @@ http://processors.wiki.ti.com/index.php/OMAP-L137_Software_Design_Guide
 http://processors.wiki.ti.com/index.php/Serial_Boot_and_Flash_Loading_Utility_for_OMAP-L137
 
 
-5. Build linux fs
+
+5. Build linux kernel
+====================
+
+Compile default kernel::
+
+   cd /home/<user>/mv_pro_5.0/montavista/pro/devkit/lsp/ti-davinci/linux-2.6.18_pro500
+   
+   make distclean ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   
+   make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make modules ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make modules modules_install INSTALL_MOD_PATH=/home/<user>/fs/smallfs ARCH=arm CROSS_COMPILE=arm_v5t_le-
+
+
+notice::
+
+   1) make modules to filesystem directory.
+   2) uImage in created in arch/arm/boot directory.
+
+
+if want to change kernel config, you can do this::
+
+   sudo apt-get install libncurses5-dev
+   
+   make menuconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
+
+
+kernel config::
+
+   # kernel config
+   networking --> networking options --> IP：Kernel level autoconfiguration --> off
+
+
+
+6. Build linux fs
 ====================
 
 sometimes, need root
@@ -281,40 +317,6 @@ make fs::
    # Create the JFFS2 image of the file system mounted at /home/<user>/workdir/ram
    
    mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
-
-
-6. Build linux kernel
-====================
-
-Compile default kernel::
-
-   cd /home/<user>/mv_pro_5.0/montavista/pro/devkit/lsp/ti-davinci/linux-2.6.18_pro500
-   
-   make distclean ARCH=arm CROSS_COMPILE=arm_v5t_le-
-   make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
-   
-   make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
-   make modules ARCH=arm CROSS_COMPILE=arm_v5t_le-
-   make modules modules_install INSTALL_MOD_PATH=/home/<user>/fs/smallfs ARCH=arm CROSS_COMPILE=arm_v5t_le-
-
-
-notice::
-
-   1) make modules to filesystem directory.
-   2) uImage in created in arch/arm/boot directory.
-
-
-if want to change kernel config, you can do this::
-
-   sudo apt-get install libncurses5-dev
-   
-   make menuconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
-
-
-kernel config::
-
-   # kernel config
-   networking --> networking options --> IP：Kernel level autoconfiguration --> off
 
 
 
