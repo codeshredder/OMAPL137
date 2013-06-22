@@ -114,8 +114,6 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
    $ sudo tar xvf mvltools5_0_0801921_update.tar.gz
    $ sudo tar xvf LSP_02_20_00_07.tar.gz
    
-   $ sudo chown -R <user>:<group> ./
-
 
 5) edit env
 
@@ -125,7 +123,8 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
    C6000_C_DIR="/home/<user>/TI/TI_CGT_C6000_6.1.9/include;/home/<user>/TI/TI_CGT_C6000_6.1.9/lib"
    PATH="/home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/bin:/home/<user>/mv_pro_5.0/montavista/pro/bin:/home/<user>/mv_pro_5.0/montavista/common/bin:$PATH"
-
+   
+   chmod +x env.sh
    source env.sh
 
 
