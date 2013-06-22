@@ -64,6 +64,9 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
 ::
 
+   #ubuntu 12.04 64-bit
+   sudo apt-get install ia32-libs libjpeg62:i386
+   
    #ubuntu 13.04 64-bit
    sudo apt-get install ia32-libs libjpeg62:i386 libgnomevfs2-0:i386 liborbit2:i386
 
