@@ -180,9 +180,21 @@ u-boot.bin in created in top level directory.
 
 5) To flash Bootloader:
 
-http://processors.wiki.ti.com/index.php/OMAP-L137_Software_Design_Guide
+There are four modes for using the serial flasher::
 
-http://processors.wiki.ti.com/index.php/Serial_Boot_and_Flash_Loading_Utility_for_OMAP-L137
+    Erase the target flash type - This will erase the entire contents of the flash.
+        C:\flasher>sfh_OMAP-L137.exe -erase 
+    Flash the memory with a single application image - This will place an application image at address 0x0 of the flash.
+        C:\flasher>sfh_OMAP-L137.exe -flash_noubl <binary application file> 
+    Flash the memory with a UBL and application image - This will place the UBL at address 0x0 and an application image, such as u-boot, at address 0x10000. This is used for the AM1707 device.
+        C:\flasher>sfh_OMAP-L137.exe -flash <UBL binary file> <binary application file> 
+    Flash the memory with a DSP UBL, ARM UBL, and application image - This will place a DSP AIS file at address 0x0 of the flash, an ARM UBL at address 0x2000, and an application image, such as u-boot, at address 0x8000. This is used for the OMAPL137_v1 and OMAPL137_v2 devices.
+        C:\flasher>sfh_OMAP-L137.exe -flash_dsp <DSP UBL AIS file> <ARM UBL binary file> <binary application file> 
+
+
+reference::
+
+   http://processors.wiki.ti.com/index.php/Serial_Boot_and_Flash_Loading_Utility_for_OMAP-L137
 
 
 
