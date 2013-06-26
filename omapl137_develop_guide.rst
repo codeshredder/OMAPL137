@@ -322,13 +322,32 @@ u-boot cmdline::
    setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw initrd=0xc1180000, <actual initramfs size>
 
 
-5) use flash fs
+5) kernel with initramfs
+
+kernel config::
+
+   General setup --> Initial RAM filesystem and RAM disk
+   General setup --> Initial RAM filesystem and RAM disk --> (/xxxx/smallfs) Initramfs source file(s)
+   
+   Device Drivers --> Block devices --> RAM block device support  --> off
+
+indicate the fs directory in kernel config.then make uImage.the uImage will include initramfs.
+
+
+u-boot cmdline::
+
+   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw
+
+no need to indicate initrd=xxxx.
+
+
+6) use flash fs
 
 make fs::
 
    # Create the JFFS2 image of the file system mounted at /home/<user>/workdir/ram
    
-   mkfs.jffs2 -r ram -e 64 -o rootfs.jffs2
+   mkfs.jffs2 -r smallfs -e 64 -o rootfs.jffs2
 
 
 
