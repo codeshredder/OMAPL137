@@ -209,8 +209,8 @@ Compile default kernel::
    make da830_omapl137_defconfig ARCH=arm CROSS_COMPILE=arm_v5t_le-
    
    make uImage -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
-   make modules ARCH=arm CROSS_COMPILE=arm_v5t_le-
-   make modules modules_install INSTALL_MOD_PATH=/home/<user>/fs/smallfs ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make modules -j8 ARCH=arm CROSS_COMPILE=arm_v5t_le-
+   make modules_install INSTALL_MOD_PATH=/home/<user>/fs/smallfs ARCH=arm CROSS_COMPILE=arm_v5t_le-
 
 
 notice::
