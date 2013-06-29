@@ -17,6 +17,7 @@ most information from TI Support site::
    http://processors.wiki.ti.com/index.php/GSG:_Building_Software_Components_for_OMAP-L1#Rebuilding_the_Linux_kernel
    http://processors.wiki.ti.com/index.php/Omapl137/DA830_linux_bootup
    http://processors.wiki.ti.com/index.php/GSG_For_DA8xx_ARM%2BDSP_Devices_Using_Community_Linux#Flash_Image
+   http://processors.wiki.ti.com/index.php/Building_PSP_Components_for_OMAP-L1x_on_v3.x_Kernel
 
 
 Table of Contents
