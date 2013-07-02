@@ -102,18 +102,16 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
 ::
 
+   # all below install to /home/<user>
    $ ./OMAPL137_arm_setuplinux_1_00_00_11.bin --mode console
    $ ./xdctools_setuplinux_3_10_05_61.bin --mode console
    $ ./bios_setuplinux_5_33_05.bin --mode console
    $ ./ti_cgt_c6000_6.1.9_setup_linux_x86.bin --mode console
    
-   # all install to /home/<user>
-   
+   # all below install to the same dir(/home/<user>/mv_pro_5.0)
    $ ./mvl_5_0_0801921_demo_sys_setuplinux.bin --mode console
    $ cd /home/<user>/OMAPL137_arm_1_00_00_11/REL_LSP_02_20_00_07/
    $ ./mvl_5_0_0_demo_lsp_setuplinux_02_20_00_07.bin --mode console
-   
-   # install to the same dir(/home/<user>/mv_pro_5.0)
    
    $ cd /home/<user>/mv_pro_5.0/
    $ sudo tar xvf mvltools5_0_0801921_update.tar.gz
