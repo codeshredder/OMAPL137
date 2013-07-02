@@ -102,7 +102,7 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
 ::
 
-   # all below install to /home/<user>
+   # all below install to /home/<user>/<application>
    $ ./OMAPL137_arm_setuplinux_1_00_00_11.bin --mode console
    $ ./xdctools_setuplinux_3_10_05_61.bin --mode console
    $ ./bios_setuplinux_5_33_05.bin --mode console
