@@ -285,8 +285,8 @@ make fs::
 
 kernel config::
 
-   General setup --> Initial RAM filesystem and RAM disk
-   Device Drivers --> Block devices --> RAM block device support
+   Device Drivers --> Block devices --> Initial RAM filesystem and RAM disk (initramfs/initrd) support
+   Device Drivers --> Block devices --> RAM disk support
    File systems --> Second extended fs support
 
 
@@ -314,10 +314,10 @@ make fs::
 
 kernel config::
 
-   General setup --> Initial RAM filesystem and RAM disk
-   General setup --> Initial RAM filesystem and RAM disk --> () Initramfs source file(s)
    
-   Device Drivers --> Block devices --> RAM block device support  --> off
+   General setup --> Initramfs source file(s)                    off
+   Device Drivers --> Block devices --> Initial RAM filesystem and RAM disk (initramfs/initrd) support
+   Device Drivers --> Block devices --> RAM disk support         off
 
 
 u-boot cmdline::
@@ -329,10 +329,9 @@ u-boot cmdline::
 
 kernel config::
 
-   General setup --> Initial RAM filesystem and RAM disk
-   General setup --> Initial RAM filesystem and RAM disk --> (/xxxx/smallfs) Initramfs source file(s)
-   
-   Device Drivers --> Block devices --> RAM block device support  --> off
+   General setup --> Initramfs source file(s)                    set initramfs file path
+   Device Drivers --> Block devices --> Initial RAM filesystem and RAM disk (initramfs/initrd) support
+   Device Drivers --> Block devices --> RAM disk support         off
 
 indicate the fs directory in kernel config.then make uImage.the uImage will include initramfs.
 
