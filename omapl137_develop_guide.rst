@@ -322,7 +322,7 @@ kernel config::
 
 u-boot cmdline::
 
-   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw initrd=0xc1180000, <actual initramfs size>
+   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw initrd=0xc1180000,<actual initramfs size>
 
 
 5) kernel with initramfs
@@ -382,7 +382,7 @@ boot initramfs::
 
    tftp 0xc0700000 uImage
    tftp 0xc1180000 initramfs.cpio.gz
-   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw initrd=0xc1180000, <actual initramfs size>
+   setenv bootargs mem=32M console=ttyS2,115200n8 root=/dev/ram0 rw initrd=0xc1180000,<actual initramfs size>
    bootm 0xc0700000
 
 
