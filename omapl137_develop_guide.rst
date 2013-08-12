@@ -275,6 +275,10 @@ There is a big filesystem directory in /home/<user>/mv_pro_5.0/montavista/pro/de
    cp -rf /home/<user>/mv_pro_5.0/montavista/pro/devkit/arm/v5t_le/target/* /home/<user>/fs/bigfs/
    cd /home/<user>/fs/bigfs
 
+if want to customize rootfs,refer to this::
+
+   http://zjbintsystem.blog.51cto.com/964211/339865/
+
 
 3) use ramdisk
 
