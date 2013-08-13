@@ -2,6 +2,7 @@
   TI OMAPL137 Develop Guide
 ==========================================================
 
+.. contents::
 
 Authors
 ==========
@@ -21,31 +22,13 @@ most information from TI Support site::
    http://processors.wiki.ti.com/index.php/Getting_Started_Guide_for_C6747
 
 
-Table of Contents
-=================
-
-::
-
-  0. What is it?
-  1. Overview
-  2. Host Prepare
-  3. Install SDK
-  4. Build Bootloader
-  5. Build linux kernel
-  6. Build linux fs
-  7. Boot linux
-  8. Develop kernel module
-  9. Develop user application
-  10. Licensing
-  11. Contacts
-  
-0. What is it?
+What is it?
 ==============
 
 It is a short way to build L137 develop environment. 
 
 
-1. Overview
+Overview
 ====================
 
 about OMAPL137::
@@ -61,7 +44,7 @@ about L137_EVM::
 first of all, you must buy a TI L137 Demo Board first. you may need SN from it.
 
 
-2. Host Prepare
+Host Prepare
 ============
 
 check http://processors.wiki.ti.com/index.php/Linux_Host_Support
@@ -132,7 +115,7 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
 
 
-4. Build Bootloader
+Build Bootloader
 ====================
 
 
@@ -201,7 +184,7 @@ reference::
 
 
 
-5. Build linux kernel
+Build linux kernel
 ====================
 
 Compile default kernel::
@@ -236,7 +219,7 @@ kernel config::
 
 
 
-6. Build linux fs
+Build linux fs
 ====================
 
 sometimes, need root
@@ -357,7 +340,7 @@ make fs::
 
 
 
-7. Boot linux
+Boot linux
 ====================
 
 setup network::
@@ -391,27 +374,41 @@ boot initramfs::
 
 
 
-8. Develop kernel module
+Develop kernel module
 ====================
 
 
 
 
-9. Develop user application
+Develop user application
 ====================
 
 arm_v5t_le-gcc hello.c -o hello 
 
 
 
-10. Licensing
+Update boot loader
+====================
+
+boot from seriel
+----------
+
+install mono::
+
+   apt-get install mono-complete
+
+
+
+
+
+Licensing
 ============
 
 This project is licensed under Creative Commons License.
 
 To view a copy of this license, visit [ http://creativecommons.org/licenses/ ].
 
-11. Contacts
+Contacts
 ===========
 
 codeshredder  : evilforce@gmail.com
