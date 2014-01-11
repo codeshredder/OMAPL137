@@ -98,8 +98,8 @@ Install SDK
    $ ./mvl_5_0_0_demo_lsp_setuplinux_02_20_00_07.bin --mode console
    
    $ cd /home/<user>/mv_pro_5.0/
-   $ sudo tar xvf mvltools5_0_0801921_update.tar.gz
    $ sudo tar xvf LSP_02_20_00_07.tar.gz
+   $ sudo tar xvf mvltools5_0_0801921_update.tar.gz
    
 
 5) edit env
