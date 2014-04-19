@@ -21,6 +21,8 @@ most information from TI Support site::
    http://processors.wiki.ti.com/index.php/Building_PSP_Components_for_OMAP-L1x_on_v3.x_Kernel
    http://processors.wiki.ti.com/index.php/Getting_Started_Guide_for_C6747
    http://www.ti.com/lit/an/sprab04g/sprab04g.pdf
+   http://processors.wiki.ti.com/index.php/MontaVista_Linux_PSP_for_OMAP-L137
+   http://processors.wiki.ti.com/index.php/DaVinci_(ARM9)_PSP_Releases
 
 
 What is it?
