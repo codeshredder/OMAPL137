@@ -134,10 +134,11 @@ Build Bootloader
 2) To compile DSP UBL:
 
    open board_utils/dspubl/ubl.pjt in CCStudio v3.3
-   Build the Project like any other CCStudio project
+   Build the Project like any other CCStudio project.
+   we can get ubl-spi.out after build project.
    
-   dsp-spi-ais.bin file is placed in the board_utils/armubl directory 
-
+   use AISgen.exe to convert ubl-spi.out to dsp-spi-ais.bin
+   
 
 3) To compile ARM UBL:
 
@@ -179,7 +180,9 @@ There are four modes for using the serial flasher::
         C:\flasher>sfh_OMAP-L137.exe -flash <UBL binary file> <binary application file> 
     Flash the memory with a DSP UBL, ARM UBL, and application image - This will place a DSP AIS file at address 0x0 of the flash, an ARM UBL at address 0x2000, and an application image, such as u-boot, at address 0x8000. This is used for the OMAPL137_v1 and OMAPL137_v2 devices.
         C:\flasher>sfh_OMAP-L137.exe -flash_dsp <DSP UBL AIS file> <ARM UBL binary file> <binary application file> 
-
+    for example:
+        sfh_OMAP-L137.exe -flash_dsp dsp-spi-ais.bin ubl-spi.bin u-boot.bin
+    
 
 reference::
 
