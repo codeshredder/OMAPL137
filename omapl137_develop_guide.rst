@@ -61,6 +61,15 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
    #ubuntu 13.04 64-bit
    sudo apt-get install ia32-libs libjpeg62:i386 libgnomevfs2-0:i386 liborbit2:i386
 
+   #ubuntu 14.04 64-bit
+   sudo -i
+   cd /etc/apt/sources.list.d
+   echo "deb http://archive.ubuntu.com/ubuntu/ raring main restricted universe multiverse" >ia32-libs-raring.list
+   apt-get update
+   apt-get install ia32-libs
+   rm ia32-libs-raring.list
+   apt-get update
+
 
 Install SDK
 ============
