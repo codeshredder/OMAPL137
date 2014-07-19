@@ -57,9 +57,11 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
 
    #ubuntu 12.04 64-bit
    sudo apt-get install ia32-libs libjpeg62:i386
+   sudo apt-get gawk
    
    #ubuntu 13.04 64-bit
    sudo apt-get install ia32-libs libjpeg62:i386 libgnomevfs2-0:i386 liborbit2:i386
+   sudo apt-get gawk
 
    #ubuntu 14.04 64-bit
    sudo -i
@@ -69,6 +71,7 @@ to install dependency packages in host linux(ubuntu 64-bit especially).
    apt-get install ia32-libs
    rm ia32-libs-raring.list
    apt-get update
+   apt-get gawk
 
 
 Install SDK
