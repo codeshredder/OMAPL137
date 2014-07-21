@@ -179,8 +179,24 @@ change to u-boot-1.3.3 directory and issue::
 
 u-boot.bin in created in top level directory.
 
+5) build Serial_Boot_and_Flash_Loading_Utility_for_OMAP-L137:
 
-5) To flash Bootloader:
+reference::
+
+   http://processors.wiki.ti.com/index.php/Serial_Boot_and_Flash_Loading_Utility_for_OMAP-L137
+
+install mono::
+
+   apt-get install mono-complete
+
+make Serial_Boot_and_Flash_Loading_Utility::
+
+   tar xvf OMAP-L137_FlashAndBootUtils_2_40.tar.gz
+   cd OMAP-L137_FlashAndBootUtils_2_40/OMAP-L137/
+   make
+
+
+6) To flash Bootloader:
 
 There are four modes for using the serial flasher::
 
@@ -192,14 +208,9 @@ There are four modes for using the serial flasher::
         C:\flasher>sfh_OMAP-L137.exe -flash <UBL binary file> <binary application file> 
     Flash the memory with a DSP UBL, ARM UBL, and application image - This will place a DSP AIS file at address 0x0 of the flash, an ARM UBL at address 0x2000, and an application image, such as u-boot, at address 0x8000. This is used for the OMAPL137_v1 and OMAPL137_v2 devices.
         C:\flasher>sfh_OMAP-L137.exe -flash_dsp <DSP UBL AIS file> <ARM UBL binary file> <binary application file> 
+
     for example:
         sfh_OMAP-L137.exe -flash_dsp dsp-spi-ais.bin ubl-spi.bin u-boot.bin
-    
-
-reference::
-
-   http://processors.wiki.ti.com/index.php/Serial_Boot_and_Flash_Loading_Utility_for_OMAP-L137
-
 
 
 Build linux kernel
@@ -405,40 +416,7 @@ arm_v5t_le-gcc hello.c -o hello
 
 
 
-Update boot loader
-====================
-
-boot from seriel
-----------
-
-reference::
-
-   http://processors.wiki.ti.com/index.php/Serial_Boot_and_Flash_Loading_Utility_for_OMAP-L137
-
-install mono::
-
-   apt-get install mono-complete
-
-make Serial_Boot_and_Flash_Loading_Utility::
-
-   tar xvf OMAP-L137_FlashAndBootUtils_2_40.tar.gz
-   cd OMAP-L137_FlashAndBootUtils_2_40/OMAP-L137/
-   make
-
-use::
-    	
-    Erase the target flash type - This will erase the entire contents of the flash.
-        mono ./sfh_OMAP-L137.exe -erase 
-    Flash the memory with a single application image - This will place an application image at address 0x0 of the flash.
-        mono ./sfh_OMAP-L137.exe -flash_noubl <binary application file> 
-    Flash the memory with a UBL and application image - This will place the UBL at address 0x0 and an application image, such as u-boot, at address 0x10000. This is used for the AM1707 device.
-        mono ./sfh_OMAP-L137.exe -flash <UBL binary file> <binary application file> 
-    Flash the memory with a DSP UBL, ARM UBL, and application image - This will place a DSP AIS file at address 0x0 of the flash, an ARM UBL at address 0x2000, and an application image, such as u-boot, at address 0x8000. This is used for the OMAPL137_v1 and OMAPL137_v2 devices.
-        mono ./sfh_OMAP-L137.exe -flash_dsp <DSP UBL AIS file> <ARM UBL binary file> <binary application file> 
-
-
-
-Licensing
+License
 ============
 
 This project is licensed under Creative Commons License.
